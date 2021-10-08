@@ -1,0 +1,38 @@
+The enclosed program can be used to measure the TCP throughput of a TCP
+channel between two machines.
+
+
+Usage:
+
+On one machine start "tcpspeed s" (the server).
+
+On the other machine start "tcpspeed c <hostname>", where <hostname> is the
+name of the machine running the server.
+
+The client will received 20 MB of data from the server, and then calculate
+and display the throughput.
+
+
+Technical information:
+
+An AmigaOS binary and the (reasonably portable) source code are are included.
+The port number and the amount of data transfered are adjustable.
+
+If your OS uses old-style (BSD 4.2) sockaddr_in structures (as, e.g. Linux),
+then you need to comment out the line
+"#define HASSINLEN".
+
+The program relies on the function "times()" to measure the elapsed time. In
+AmigaOS "clock()" is used instead, because sc.lib does not have "times()".
+
+DO NOT use "clock()" in Unix, because in Unix that function measures used CPU
+time, not elapsed overall time. If your Unix dialect does not have "times()"
+then use some other function that measures elapsed time with an accuracy of
+at least 1 ms.
+
+05-09-2000 Addendum by Gian Maria "Giangi" Calzolari <gcalzo@geocities.com>
+           The source has been a bit changed by Simone "Wiz" Tellini
+           <wiz@vapor.com> to allow a Win32 compile. The new source and the
+           executable, tcpspeed.exe, are now included!
+           The original src is into "oldsrc"
+

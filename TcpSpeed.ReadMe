@@ -1,0 +1,17 @@
+Short:    Measure the TCP throughput of a TCP channel between two machines.
+Uploader: gcalzo@geocities.com (Gian Maria Calzolari)
+Author:   ...unknown...
+Type:     comm/tcp
+
+On one machine start "tcpspeed s" (the server).
+
+On the other machine start "tcpspeed c <hostname>", where <hostname> is the
+name of the machine running the server.
+
+The client will received 20 MB of data from the server, and then calculate
+and display the throughput.
+
+
+First downloaded from ftp.nordicglobal.com, then added a win32 executable and
+finally uploaded to Aminet
+
