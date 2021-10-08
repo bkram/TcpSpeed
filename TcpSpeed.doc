@@ -30,9 +30,14 @@ time, not elapsed overall time. If your Unix dialect does not have "times()"
 then use some other function that measures elapsed time with an accuracy of
 at least 1 ms.
 
-05-09-2000 Addendum by Gian Maria "Giangi" Calzolari <gcalzo@geocities.com>
-           The source has been a bit changed by Simone "Wiz" Tellini
-           <wiz@vapor.com> to allow a Win32 compile. The new source and the
-           executable, tcpspeed.exe, are now included!
-           The original src is into "oldsrc"
+05-09-2000  Addendum by Gian Maria "Giangi" Calzolari <gcalzo@geocities.com>
+            The source has been a bit changed by Simone "Wiz" Tellini
+            <wiz@vapor.com> to allow a Win32 compile. The new source and the
+            executable, tcpspeed.exe, are now included!
+            The original src is into "oldsrc"
 
+08-10-2021  Retrieved archive from aminet (http://aminet.net/package/comm/tcp/TcpSpeed)
+            Made some changes to be able to compile with (modern) Linux
+            Added some more text and status updates in server mode
+            Removed dated binaries, removed "old" source.
+            Include simple Makefile for Linux
