@@ -8,6 +8,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netdb.h>
+#include <arpa/inet.h>
 #endif
 #include <string.h>
 #include <stdio.h>
@@ -59,6 +60,9 @@ void main(int argc, char *argv[])
     int sock;
     int len, totallen;
     struct sockaddr_in sin;
+    struct sockaddr_in address;
+    int addrlen = sizeof(address);
+
 #ifdef WIN32
     WORD VersionRequested = MAKEWORD(2, 0);
     WSADATA WsaData;
@@ -143,16 +147,20 @@ void main(int argc, char *argv[])
             printf("Waiting for a connection\n");
         }
         listen(sock, 5);
-        if (0 > (sock2 = accept(sock, 0, 0)))
+
+
+        sock2 = accept(sock, (struct sockaddr *)&address,
+                       (socklen_t *)&addrlen);
+
+        if (0 > sock2)
         {
             fprintf(stderr, "Unable to accept\n");
             exit(0);
         }
-        else
-        {
-            printf("Host has connected\n");
-        }
-        printf("Sending buffers\n");
+
+        printf("New connection from ip: %s\n", inet_ntoa(address.sin_addr));
+
+        printf("Starting sending buffers\n");
 
         for (i = 0; i < BUFNUM + 1; i++)
             if (0 >= send(sock2, buf, BUFLEN, 0))
